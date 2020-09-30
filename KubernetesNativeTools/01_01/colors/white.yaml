@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: white
+spec:
+  selector:
+    matchLabels:
+      app: white
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: white
+    spec:
+      containers:
+      - name: white
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80

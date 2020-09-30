@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: purple
+spec:
+  selector:
+    matchLabels:
+      app: purple
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: purple
+    spec:
+      containers:
+      - name: purple
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80

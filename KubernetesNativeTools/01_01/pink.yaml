@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pink
+spec:
+  selector:
+    matchLabels:
+      app: punk
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pink
+    spec:
+      containers:
+      - name: pink
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80
