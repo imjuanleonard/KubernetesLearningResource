@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: example-app-rules
+  labels:
+    role: prometheus-rulefiles
+    prometheus: prometheus
+data:
+  app.rules.yaml: |+
+    groups:
+    - name: ./app.rules
+      rules:
+      - alert: App Alert
+        expr: sum(demo_api_http_requests_in_progress) > 3

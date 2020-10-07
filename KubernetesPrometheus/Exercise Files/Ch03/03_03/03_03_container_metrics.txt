@@ -1,0 +1,12 @@
+# Then we change the filter to tune in to a single pod
+container_cpu_user_seconds_total{pod_name="prometheus-prometheus-1"}
+
+# We can then switch from a point data to a data range
+container_cpu_user_seconds_total{pod_name="prometheus-prometheus-1"}[5m]
+
+# And now we can start to manipulate the data, first let's look at rate of change
+rate(container_cpu_user_seconds_total{pod_name="prometheus-prometheus-1"}[5m])
+
+# And then let's see about the pod metric rather than the individual containers
+sum(rate(container_cpu_user_seconds_total{pod_name="prometheus-prometheus-1"}[5m]))
+

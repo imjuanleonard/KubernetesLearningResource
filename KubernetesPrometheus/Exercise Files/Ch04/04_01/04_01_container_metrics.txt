@@ -1,0 +1,15 @@
+# First we find a time series set that we can work with
+# With the example app running, we can look at requests in action
+demo_api_http_requests_in_progress
+
+# So how do we get a summary of these vectors?  We could sum them up:
+sum(demo_api_http_requests_in_progress)
+
+# But that might be double counting (as this app talks to itself)
+# How do we go about filtering on instance data?
+sum(demo_api_http_requests_in_progress) without (instance)
+
+sum(demo_api_http_requests_in_progress) without (pod)
+
+# We can also look at unique requests, by removing overlapping requests
+demo_api_http_requests_in_progress{instance=~"100.96.3.*:8080"} unless demo_api_http_requests_in_progress{instance=~"100.96.4.*:8080"} unless demo_api_http_requests_in_progress{instance=~"100.96.5.*:8080"}

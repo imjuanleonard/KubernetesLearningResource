@@ -1,0 +1,9 @@
+# We start with a large swath of metrics
+http_requests_total
+
+# We might know of a specific type of request, e.g. code 200 requests
+http_requests_total{code="200"}
+
+# Then we further refine it by looking at only the top requestors
+topk(3,http_requests_total{code="200"})
+

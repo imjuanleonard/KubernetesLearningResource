@@ -1,0 +1,8 @@
+# We find an interesting cAdvisor provided metric
+container_cpu_user_seconds_total
+
+# We do a little filtering to remove some obvious non-pod data
+container_cpu_user_seconds_total{pod_name!=""}
+
+# Then we change the filter to tune in to a single pod
+container_cpu_user_seconds_total{pod_name="prometheus-prometheus-1"}
