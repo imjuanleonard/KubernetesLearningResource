@@ -1,0 +1,1 @@
+kubectl exec -it $(kubectl get pod -l app=fortio -o jsonpath={.items..metadata.name}) -c fortio /usr/local/bin/fortio -- $*

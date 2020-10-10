@@ -1,0 +1,11 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: "permissive"
+  namespace: "mtls"
+spec:
+  targets:
+  - name: hostname
+  peers:
+  - mtls:
+      mode: PERMISSIVE

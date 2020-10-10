@@ -1,0 +1,1 @@
+kubectl exec -it $(kubectl get pod -l app=fortio -o jsonpath={.items..metadata.name}) -c istio-proxy -- sh -c 'curl localhost:15000/stats' | grep hostname | grep pending

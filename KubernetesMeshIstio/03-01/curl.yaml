@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: curl
+  labels:
+    app: curl
+spec:
+  ports:
+  - port: 80
+    name: http
+  selector:
+    app: curl
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: curl
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: curl
+    spec:
+      containers:
+      - name: curl
+        image: tutum/curl
+        command: ["/bin/sleep","infinity"]
+        imagePullPolicy: IfNotPresent

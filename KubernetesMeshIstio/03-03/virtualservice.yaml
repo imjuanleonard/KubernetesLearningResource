@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mtls-service
+  namespace: mtls
+spec:
+  gateways:
+  - mtls-gateway
+  hosts:
+  - hostname.mtls.com
+  http:
+  - route:
+    - destination:
+        host: hostname
+        subset: v3
+        port:
+          number: 80

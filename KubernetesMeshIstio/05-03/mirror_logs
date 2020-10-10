@@ -1,0 +1,5 @@
+echo V1 logs:
+kubectl logs $(kubectl get pod -l version=v1 -o jsonpath={.items..metadata.name}) -c hostname | tail -n 3
+echo V2 logs:
+kubectl logs $(kubectl get pod -l version=v2 -o jsonpath={.items..metadata.name}) -c hostname | tail -n 3
+
